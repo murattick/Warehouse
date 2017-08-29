@@ -1,0 +1,84 @@
+﻿@model IEnumerable<TestApi.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="form-group">
+    <form method="get" action="http://localhost:63910/OrderDetails/Index">
+        <input type="hidden" name="start" id="start" value="2017-06-01" />
+        <input type="submit" value="P1-01.06/30.06" class="btn btn-default" />
+    </form>
+    <form method="get" action="http://localhost:63910/OrderDetails/Index">
+        <input type="hidden" name="start" id="start" value="2017-07-01" />
+        <input type="submit" value="P2-01.07/31.07" class="btn btn-default" />
+    </form>
+    <form method="get" action="http://localhost:63910/OrderDetails/Index">
+        <input type="hidden" name="start" id="start" value="2017-08-01" />
+        <input type="submit" value="P3-01.08/31.08" class="btn btn-default" />
+    </form>
+</div>
+<form action="http://localhost:63910/OrderDetails/Index">
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary">Очистить фильтр</button>
+    </div>
+</form>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Product Code
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Quantity of goods IN
+        </th>
+        <th>
+            Quantity of goods OUT
+        </th>
+        <th>
+            Quantity Total IN/OUT
+        </th>
+        <th>
+            Quantity of START period
+        </th>
+        <th>
+            Quantity of FINISHED period
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCode)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.ItemTitle)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pstart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pfinish)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

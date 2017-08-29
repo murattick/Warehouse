@@ -1,0 +1,11 @@
+﻿@model int
+@{
+    ViewBag.Title = "Checkout Complete";
+}
+<h2>Заказ сохранен</h2>
+<p>Спасибо! Ваш номер заказа: @Model</p>
+<p>
+    Продолжить работу.
+    @Html.ActionLink("На главную", "Index", "Home")
+</p>
+
